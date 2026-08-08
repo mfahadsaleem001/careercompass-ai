@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — CareerCompass AI{% endblock %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 20px;">
+    <h2>Welcome, {{ user.full_name }} 👋</h2>
+    <p style="color: var(--text-muted); margin-top: 8px;">
+        Here's your career command center.
+    </p>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <a href="{{ url_for('career.advisor') }}" class="card" style="text-decoration: none; color: inherit;">
+        <h3>🎯 AI Career Advisor</h3>
+        <p style="color: var(--text-muted); margin-top: 8px;">Get personalized career suggestions based on your profile.</p>
+    </a>
+    <a href="{{ url_for('career.history') }}" class="card" style="text-decoration: none; color: inherit;">
+        <h3>📂 My Career Reports</h3>
+        <p style="color: var(--text-muted); margin-top: 8px;">View your previously generated career plans.</p>
+    </a>
+</div>
+{% endblock %}

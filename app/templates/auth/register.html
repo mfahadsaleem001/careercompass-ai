@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Create Account — CareerCompass AI{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h2>Create your account</h2>
+        <p class="subtitle">Start your AI-powered career journey today.</p>
+
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.full_name.label }}
+                {{ form.full_name(class="form-control", placeholder="Your full name") }}
+                {% for error in form.full_name.errors %}
+                    <div class="form-errors">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(class="form-control", placeholder="you@example.com") }}
+                {% for error in form.email.errors %}
+                    <div class="form-errors">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label }}
+                <div class="password-wrapper">
+                    {{ form.password(class="form-control", placeholder="At least 6 characters", id="password") }}
+                    <span class="toggle-password" onclick="togglePassword('password', this)">Show</span>
+                </div>
+                {% for error in form.password.errors %}
+                    <div class="form-errors">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.confirm_password.label }}
+                <div class="password-wrapper">
+                    {{ form.confirm_password(class="form-control", placeholder="Re-enter password", id="confirm_password") }}
+                    <span class="toggle-password" onclick="togglePassword('confirm_password', this)">Show</span>
+                </div>
+                {% for error in form.confirm_password.errors %}
+                    <div class="form-errors">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="btn btn-primary", style="width:100%; margin-top:8px;") }}
+        </form>
+
+        <p class="auth-footer">Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

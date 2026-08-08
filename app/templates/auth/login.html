@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Login — CareerCompass AI{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <h2>Welcome back</h2>
+        <p class="subtitle">Log in to continue your career journey.</p>
+
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.email.label }}
+                {{ form.email(class="form-control", placeholder="you@example.com") }}
+                {% for error in form.email.errors %}
+                    <div class="form-errors">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.password.label }}
+                <div class="password-wrapper">
+                    {{ form.password(class="form-control", placeholder="Your password", id="password") }}
+                    <span class="toggle-password" onclick="togglePassword('password', this)">Show</span>
+                </div>
+                {% for error in form.password.errors %}
+                    <div class="form-errors">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            {{ form.submit(class="btn btn-primary", style="width:100%; margin-top:8px;") }}
+        </form>
+
+        <p class="auth-footer">Don't have an account? <a href="{{ url_for('auth.register') }}">Sign up</a></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

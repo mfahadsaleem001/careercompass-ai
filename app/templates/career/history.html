@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Career Report History — CareerCompass AI{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <h2>Your Career Reports</h2>
+    <a href="{{ url_for('career.advisor') }}" class="btn btn-primary">+ New Report</a>
+</div>
+
+{% if reports %}
+    {% for report in reports %}
+        <a href="{{ url_for('career.report_detail', report_id=report.id) }}"
+           class="card" style="display: block; margin-bottom: 14px; text-decoration: none; color: inherit;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <strong>{{ report.education_level }}</strong>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+                        {{ report.interests }}
+                    </p>
+                </div>
+                <span style="color: var(--text-muted); font-size: 13px;">
+                    {{ report.created_at.strftime('%d %b %Y') }}
+                </span>
+            </div>
+        </a>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <p style="color: var(--text-muted);">No reports yet. Create your first career plan!</p>
+    </div>
+{% endif %}
+{% endblock %}

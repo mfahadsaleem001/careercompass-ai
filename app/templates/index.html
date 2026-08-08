@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}CareerCompass AI — Your AI Career Guide{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section style="text-align: center; padding: 60px 20px 40px;">
+    <div style="display: inline-block; background: var(--primary-light); color: var(--primary); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px;">
+        ✨ Powered by AI
+    </div>
+    <h1 style="font-size: 42px; font-weight: 800; line-height: 1.2; max-width: 700px; margin: 0 auto 16px;">
+        Not sure what career path to take? <span style="color: var(--primary);">Let AI guide you.</span>
+    </h1>
+    <p style="color: var(--text-muted); font-size: 17px; max-width: 560px; margin: 0 auto 32px;">
+        Whether you just passed Matric, Intermediate, or you're a graduate — tell us about yourself and get a personalized career plan in seconds.
+    </p>
+    <a href="{{ url_for('auth.register') }}" class="btn btn-primary" style="padding: 14px 32px; font-size: 15px;">Get Your Free Career Plan →</a>
+</section>
+
+<!-- Features Section -->
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 40px;">
+    <div class="card">
+        <div style="font-size: 28px; margin-bottom: 12px;">🎯</div>
+        <h3 style="margin-bottom: 8px;">Personalized Guidance</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">Based on your education, interests, skills, and goals — not generic advice.</p>
+    </div>
+    <div class="card">
+        <div style="font-size: 28px; margin-bottom: 12px;">🎓</div>
+        <h3 style="margin-bottom: 8px;">Degree & University Suggestions</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">Discover the right degree programs and universities for your career goal.</p>
+    </div>
+    <div class="card">
+        <div style="font-size: 28px; margin-bottom: 12px;">🗺️</div>
+        <h3 style="margin-bottom: 8px;">Step-by-Step Roadmap</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">Get a clear roadmap — from where you are today to your first job.</p>
+    </div>
+    <div class="card">
+        <div style="font-size: 28px; margin-bottom: 12px;">📄</div>
+        <h3 style="margin-bottom: 8px;">Downloadable Reports</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">Save your career plan as a PDF and revisit it anytime.</p>
+    </div>
+</section>
+
+<!-- How it works -->
+<section style="margin-top: 60px;">
+    <h2 style="text-align: center; margin-bottom: 32px;">How It Works</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+        <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 12px;">1</div>
+            <h3 style="font-size: 16px; margin-bottom: 6px;">Create an Account</h3>
+            <p style="color: var(--text-muted); font-size: 14px;">Sign up in seconds — it's free.</p>
+        </div>
+        <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 12px;">2</div>
+            <h3 style="font-size: 16px; margin-bottom: 6px;">Tell Us About You</h3>
+            <p style="color: var(--text-muted); font-size: 14px;">Education, interests, skills, and goals.</p>
+        </div>
+        <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 12px;">3</div>
+            <h3 style="font-size: 16px; margin-bottom: 6px;">Get Your AI Plan</h3>
+            <p style="color: var(--text-muted); font-size: 14px;">Receive a complete personalized career report.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section style="text-align: center; margin-top: 60px; margin-bottom: 40px;">
+    <div class="card" style="max-width: 600px; margin: 0 auto; text-align: center;">
+        <h2 style="margin-bottom: 10px;">Ready to find your path?</h2>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Join students who've already discovered their ideal career direction.</p>
+        <a href="{{ url_for('auth.register') }}" class="btn btn-primary" style="padding: 12px 28px;">Get Started — It's Free</a>
+    </div>
+</section>
+
+{% endblock %}

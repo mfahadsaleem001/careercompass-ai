@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Career Report — CareerCompass AI{% endblock %}
+
+{% block content %}
+
+{% if result._is_mock %}
+<div class="card" style="background: #3a2f00; border: 1px solid #8a6d00; margin-bottom: 20px;">
+    <p style="margin: 0; color: #ffd966;">⚠️ {{ result.ai_explanation }}</p>
+</div>
+{% endif %}
+
+<div class="card" style="margin-bottom: 20px;">
+    <h2>🎯 Your Career Report</h2>
+    <p style="color: var(--text-muted); margin-top: 8px;">
+        {{ report.education_level }} • {{ report.preferred_industry }} • {{ report.created_at.strftime('%d %b %Y') }}
+    </p>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>💼 Career Suggestions</h3>
+    <ul>
+        {% for item in result.career_suggestions %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>🎓 Recommended Degree Programs</h3>
+    <ul>
+        {% for item in result.recommended_degree_programs %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>🏫 Recommended Universities</h3>
+    <ul>
+        {% for item in result.recommended_universities %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>🛠️ Skills to Learn</h3>
+    <ul>
+        {% for item in result.skills_to_learn %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>📜 Certifications</h3>
+    <ul>
+        {% for item in result.certifications %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>💻 Job Opportunities</h3>
+    <ul>
+        {% for item in result.job_opportunities %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>💰 Salary Estimates</h3>
+    <p>{{ result.salary_estimates }}</p>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>🚀 Future Scope</h3>
+    <p>{{ result.future_scope }}</p>
+</div>
+
+<div class="card" style="margin-bottom: 20px;">
+    <h3>🗺️ Roadmap</h3>
+    <ol>
+        {% for step in result.roadmap %}
+        <li>{{ step }}</li>
+        {% endfor %}
+    </ol>
+</div>
+
+<div style="display: flex; gap: 12px;">
+    <a href="{{ url_for('career.history') }}" class="btn" style="background: var(--primary); color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none;">← Back to Reports</a>
+    <a href="{{ url_for('career.download_report', report_id=report.id) }}" class="btn" style="background: #2a9d8f; color: white; padding: 10px 18px; border-radius: 8px; text-decoration: none;">⬇ Download PDF</a>
+</div>
+
+{% endblock %}

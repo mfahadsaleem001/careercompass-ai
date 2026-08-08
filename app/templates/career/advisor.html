@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}AI Career Advisor — CareerCompass AI{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 720px; margin: 0 auto;">
+    <h2>AI Career Advisor</h2>
+    <p style="color: var(--text-muted); margin-top: 6px; margin-bottom: 28px;">
+        Tell us about yourself and get a personalized career plan powered by AI.
+    </p>
+
+    <form method="POST" novalidate>
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.education_level.label }}
+            {{ form.education_level(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.marks_cgpa.label }}
+            {{ form.marks_cgpa(class="form-control", placeholder="e.g. 85% or 3.6 CGPA") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.interests.label }}
+            {{ form.interests(class="form-control", rows="3", placeholder="e.g. Technology, design, problem-solving...") }}
+            {% for error in form.interests.errors %}
+                <div class="form-errors">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            {{ form.skills.label }}
+            {{ form.skills(class="form-control", rows="3", placeholder="e.g. Basic Python, MS Office, communication...") }}
+        </div>
+
+        <div class="form-group">
+            {{ form.career_goal.label }}
+            {{ form.career_goal(class="form-control", placeholder="e.g. Become a Software Engineer") }}
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+                {{ form.budget.label }}
+                {{ form.budget(class="form-control", placeholder="e.g. PKR 500,000") }}
+            </div>
+            <div class="form-group">
+                {{ form.country.label }}
+                {{ form.country(class="form-control", placeholder="e.g. Pakistan") }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form.preferred_industry.label }}
+            {{ form.preferred_industry(class="form-control", placeholder="e.g. IT, Healthcare, Finance") }}
+        </div>
+
+        {{ form.submit(class="btn btn-primary", style="width:100%; margin-top:8px;") }}
+    </form>
+</div>
+{% endblock %}
