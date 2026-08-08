@@ -35,8 +35,9 @@ def _init_extensions(app):
 
 
 def _ensure_folders(app):
-    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-    os.makedirs(app.config['REPORTS_FOLDER'], exist_ok=True)
+    if os.environ.get("VERCEL") != "1":
+        os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+        os.makedirs(app.config['REPORTS_FOLDER'], exist_ok=True)
 
 
 def _register_blueprints(app):
