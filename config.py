@@ -30,7 +30,11 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+    'DATABASE_URL'
+    ) or os.environ.get(
+    'DATABASE_PRISMA_DATABASE_URL'
+    )
 
     @staticmethod
     def init_app(app):
